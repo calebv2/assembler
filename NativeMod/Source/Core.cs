@@ -7,7 +7,7 @@ using MelonLoader;
 using SyncLib.Items;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(ArrowAssemblerNative.Core), "ArrowAssembler", "0.1.12", "caleb")]
+[assembly: MelonInfo(typeof(ArrowAssemblerNative.Core), "ArrowAssembler", "0.1.13", "caleb")]
 [assembly: MelonGame("Alta", "A Township Tale")]
 [assembly: MelonAdditionalDependencies("SyncLib")]
 namespace ArrowAssemblerNative
@@ -26,7 +26,7 @@ namespace ArrowAssemblerNative
         public override void OnInitializeMelon()
         {
             NetworkPrefabRegistry.RegisterPrefabs += RegisterAssembler;
-            LoggerInstance.Msg("ASSEMBLER_STARTUP version=0.1.12 role=" + (ServerBuild ? "server" : "client"));
+            LoggerInstance.Msg("ASSEMBLER_STARTUP version=0.1.13 role=" + (ServerBuild ? "server" : "client"));
         }
         public override void OnLateInitializeMelon()
         {
@@ -96,7 +96,7 @@ namespace ArrowAssemblerNative
             string stage = "role-check";
             try
             {
-                LoggerInstance.Msg("ASSEMBLER_REGISTRATION_BEGIN version=0.1.12 role=" + (ServerBuild ? "server" : "client"));
+                LoggerInstance.Msg("ASSEMBLER_REGISTRATION_BEGIN version=0.1.13 role=" + (ServerBuild ? "server" : "client"));
                 if (NetworkSceneManager.IsServer != ServerBuild)
                     throw new InvalidOperationException("Install the matching ArrowAssembler Client/Server DLL, not both.");
                 // Never wait for Unity asset I/O inside SyncLib's shared registration callback.
