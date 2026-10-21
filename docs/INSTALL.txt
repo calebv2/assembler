@@ -1,0 +1,22 @@
+Arrow Assembler 0.1.12 for A Township Tale (PC)
+
+Requires MelonLoader and compatible SyncLib installations on client and server.
+
+1. Close the client and server.
+2. Put Client/Mods/ArrowAssembler.dll in the client's Mods folder.
+3. Put Server/Mods/ArrowAssembler.dll in the server's Mods folder.
+4. Keep only one ArrowAssembler DLL on each side. Do not mix the roles.
+5. Keep existing SyncLib and modHashIds.json files. Restart server, then client.
+
+Prefab: ArrowAssembler
+Server console: spawn "PlayerName" ArrowAssembler
+Prefab lookup: spawn find ArrowAssembler
+
+Drop singles or ingredient bags into the top hopper. The input bubbles are
+shaft, feather/fletching, and tip/spike. One of each produces an arrow in
+three seconds. Each input bubble holds one item type at a time. Use the
+separate output bubble to collect completed arrows. Items can be retrieved
+from the native storage bubbles.
+
+Models, materials and sound are embedded in the DLLs; no separate bundle
+installation is needed. Game assemblies and SyncLib are not included.
