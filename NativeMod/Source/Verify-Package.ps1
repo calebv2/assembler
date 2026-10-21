@@ -28,7 +28,7 @@ try {
   $a=[Mono.Cecil.AssemblyDefinition]::ReadAssembly((Join-Path $Package "$role\ArrowAssembler.dll"))
   try {
    $info=$a.CustomAttributes | Where-Object {$_.AttributeType.FullName -eq 'MelonLoader.MelonInfoAttribute'}
-   if($info.ConstructorArguments[1].Value -ne 'ArrowAssembler' -or $info.ConstructorArguments[2].Value -ne '0.1.13' -or $info.ConstructorArguments[3].Value -ne 'caleb'){throw 'Mod identity mismatch'}
+   if($info.ConstructorArguments[1].Value -ne 'ArrowAssembler' -or $info.ConstructorArguments[2].Value -ne '0.1.14' -or $info.ConstructorArguments[3].Value -ne 'caleb'){throw 'Mod identity mismatch'}
    $m=$a.MainModule.Types | Where-Object FullName -eq 'ArrowAssemblerNative.AssemblerMachine'
    if($m.BaseType.FullName -ne 'Alta.Networking.NetworkEntityBehaviour'){throw 'Missing network behaviour'}
    if(('Assemble' -in $m.Methods.Name) -ne ($role -eq 'Server')){throw 'Incorrect crafting role isolation'}

@@ -9,7 +9,7 @@ A top-loading arrow assembler for the PC version of A Township Tale, using Melon
 ## Installation
 
 1. Install compatible MelonLoader and SyncLib versions on both client and server.
-2. Close both applications and download `Assembler-Mod-0.1.13.zip` from Releases.
+2. Close both applications and download `Assembler-Mod-0.1.14.zip` from Releases.
 3. Copy `Client/Mods/ArrowAssembler.dll` to the client's `Mods` folder.
 4. Copy `Server/Mods/ArrowAssembler.dll` to the server's `Mods` folder.
 5. Replace old copies rather than keeping duplicate DLLs. Preserve existing SyncLib and `modHashIds.json` files. Start the server, then the client.
@@ -55,7 +55,7 @@ If Unity is installed elsewhere, add `-UnityPath 'D:\Unity\2020.3.23f1\Editor\Un
 The script exports the model bundle, compiles both roles, checks native field contracts and embedded assets, then creates:
 
 ```text
-dist/Assembler-Mod-0.1.13.zip
+dist/Assembler-Mod-0.1.14.zip
 dist/SHA256SUMS.txt
 ```
 

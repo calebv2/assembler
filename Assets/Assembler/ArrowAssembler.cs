@@ -55,7 +55,7 @@ namespace Builder.Assembler
             Part("Bowl feed neck",PrimitiveType.Cylinder,new Vector3(0,1.85f,.12f),new Vector3(.55f,.27f,.55f),metal);
             // Revolved cross-section forms a thick, genuinely hollow bowl with an open throat.
             Lathe("Hollow receiving bowl",new[]{new Vector2(.27f,1.92f),new Vector2(.51f,2.01f),new Vector2(.8f,2.22f),new Vector2(1.02f,2.55f),new Vector2(1.03f,2.63f),new Vector2(.93f,2.63f),new Vector2(.91f,2.54f),new Vector2(.69f,2.27f),new Vector2(.42f,2.09f),new Vector2(.22f,2.05f)},brass);
-            Lathe("Rolled iron bowl lip",new[]{new Vector2(.94f,2.59f),new Vector2(.93f,2.66f),new Vector2(.99f,2.7f),new Vector2(1.06f,2.66f),new Vector2(1.06f,2.6f),new Vector2(.94f,2.59f)},metal);
+            Lathe("Rolled iron bowl lip",new[]{new Vector2(.94f,2.59f),new Vector2(.93f,2.66f),new Vector2(.99f,2.7f),new Vector2(1.06f,2.66f),new Vector2(1.06f,2.6f),new Vector2(.94f,2.59f)},metal,true);
             var hopper=new GameObject("ONE SHARED HOPPER"); hopper.transform.SetParent(transform,false); hopper.transform.localPosition=new Vector3(0,2.5f,.12f);
             hopper.AddComponent<SphereCollider>().radius=1.05f;
             hopper.AddComponent<AssemblerTarget>().type=AssemblerTarget.TargetType.Hopper;
@@ -121,7 +121,7 @@ namespace Builder.Assembler
                 }
             }
         }
-        void Lathe(string name,Vector2[] profile,Material material)
+        void Lathe(string name,Vector2[] profile,Material material,bool reverseWinding=false)
         {
             var vertices=new List<Vector3>(); var triangles=new List<int>(); const int sides=20;
             for(int j=0;j<profile.Length-1;j++) for(int i=0;i<sides;i++)
@@ -132,7 +132,7 @@ namespace Builder.Assembler
                 vertices.Add(new Vector3(Mathf.Cos(b)*profile[j].x,profile[j].y,Mathf.Sin(b)*profile[j].x+.12f));
                 vertices.Add(new Vector3(Mathf.Cos(b)*profile[j+1].x,profile[j+1].y,Mathf.Sin(b)*profile[j+1].x+.12f));
                 vertices.Add(new Vector3(Mathf.Cos(a)*profile[j+1].x,profile[j+1].y,Mathf.Sin(a)*profile[j+1].x+.12f));
-                triangles.AddRange(new[]{k,k+2,k+1,k,k+3,k+2});
+                triangles.AddRange(reverseWinding ? new[]{k,k+1,k+2,k,k+2,k+3} : new[]{k,k+2,k+1,k,k+3,k+2});
             }
             var mesh=new Mesh{name=name}; mesh.SetVertices(vertices); mesh.SetTriangles(triangles,0); mesh.RecalculateNormals(); mesh.RecalculateBounds();
             var go=new GameObject(name); go.transform.SetParent(transform,false); go.AddComponent<MeshFilter>().sharedMesh=mesh; go.AddComponent<MeshRenderer>().sharedMaterial=material;

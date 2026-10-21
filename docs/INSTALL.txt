@@ -1,4 +1,4 @@
-Arrow Assembler 0.1.13 for A Township Tale (PC)
+Arrow Assembler 0.1.14 for A Township Tale (PC)
 
 Requires MelonLoader and compatible SyncLib installations on client and server.
 

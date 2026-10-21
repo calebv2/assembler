@@ -22,7 +22,7 @@ if(!(Test-Path -LiteralPath $bundle)){throw 'Export the model from Unity before 
 $native=Join-Path $Output 'Native'
 & (Join-Path $PSScriptRoot 'NativeMod\Source\Build.ps1') -GamePath $GamePath -SyncLib $SyncLib -UnityPath $UnityPath -Bundle $bundle -Output $native
 & (Join-Path $PSScriptRoot 'NativeMod\Source\Verify-Package.ps1') -GamePath $GamePath -Bundle $bundle -Package $native
-$version='0.1.13'
+$version='0.1.14'
 $package=Join-Path $Output "Assembler-Mod-$version"
 foreach($role in @('Client','Server')){
  $target=Join-Path $package "$role\Mods"
